@@ -1,0 +1,5 @@
+name = GSB Feature All Research Display
+core = 7.x
+package = GSB
+version = 7.x-5.18
+project = gsb_feature_all_research_display
