@@ -2,7 +2,7 @@
 
 
 function gsb_feature_all_research_display_form_views_content_views_panes_content_type_edit_form_alter(&$form, &$form_state, $form_id) {
-/
+
   if (in_array($form_state['subtype_name'], array('gsb_all_research_listing-all_research_panel_pane', 'views-exposed-form-gsb-all-research-listing-all-research-panel-pane'))) {
     $view_modes = $form['view_mode']['#options'];
     foreach($view_modes as $key => $value) {
