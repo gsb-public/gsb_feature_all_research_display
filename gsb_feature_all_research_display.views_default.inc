@@ -154,6 +154,7 @@ function gsb_feature_all_research_display_views_default_views() {
   $handler->display->display_options['defaults']['exposed_form'] = FALSE;
   $handler->display->display_options['exposed_form']['type'] = 'better_exposed_filters';
   $handler->display->display_options['exposed_form']['options']['autosubmit'] = TRUE;
+  $handler->display->display_options['exposed_form']['options']['autosubmit_hide'] = FALSE;
   $handler->display->display_options['exposed_form']['options']['bef'] = array(
     'general' => array(
       'allow_secondary' => 0,
@@ -460,7 +461,6 @@ function gsb_feature_all_research_display_views_default_views() {
   $handler->display->display_options['filters']['field_search_field_value']['group'] = 1;
   $handler->display->display_options['filters']['field_search_field_value']['exposed'] = TRUE;
   $handler->display->display_options['filters']['field_search_field_value']['expose']['operator_id'] = 'field_search_field_value_op';
-  $handler->display->display_options['filters']['field_search_field_value']['expose']['label'] = 'Search';
   $handler->display->display_options['filters']['field_search_field_value']['expose']['operator'] = 'field_search_field_value_op';
   $handler->display->display_options['filters']['field_search_field_value']['expose']['identifier'] = 'field_search_field_value';
   $handler->display->display_options['filters']['field_search_field_value']['expose']['remember_roles'] = array(

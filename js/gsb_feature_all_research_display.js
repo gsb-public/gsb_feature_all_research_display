@@ -30,8 +30,5 @@
           $('#edit-exposed-field-circle-topics-tid').attr('disabled', 'true');
         }
       });
-
-    }
   };
 })(jQuery);
-
