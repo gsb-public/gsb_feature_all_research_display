@@ -76,7 +76,6 @@ function gsb_feature_all_research_display_form_views_exposed_form_alter(&$form, 
         '#type' => 'fieldset',
         '#collapsible' => TRUE,
         '#collapsed' => (empty($form_state['input']['field_publication_type_value']) && empty($form_state['input']['field_circle_topics_tid'])) ? TRUE : FALSE,
-
       );
     }
    if ($display_pub == 1) {
