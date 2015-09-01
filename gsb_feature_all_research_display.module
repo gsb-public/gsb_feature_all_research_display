@@ -63,7 +63,7 @@ function gsb_feature_all_research_display_pane_form_validate(&$form, &$form_stat
 
 function gsb_feature_all_research_display_form_views_exposed_form_alter(&$form, &$form_state) {
   if ($form['#id'] == 'views-exposed-form-gsb-all-research-listing-all-research-panel-pane') {
-    $form['field_search_field_value']['#attributes']['class'] = array('ctools-auto-submit-exclude');
+    $form['field_search_field_value']['#attributes']['class'][] = 'ctools-auto-submit-exclude';
     if (isset($form_state['input']['field_centers_research_programs_tid'])) {
       $options = array();
       $filter_on = FALSE;
