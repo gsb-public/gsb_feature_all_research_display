@@ -20,9 +20,9 @@ function gsb_feature_all_research_display_form_views_content_views_panes_content
     $form['view_mode']['#weight'] = -99;
     $form['exposed']['filter-field_publication_type_value']['expose_to_visitor']['#weight'] = -98;
     $form['exposed']['filter-field_circle_topics_tid']['expose_to_visitor']['#weight'] = -97;
-    $form['exposed']['filter-field_publication_type_value']['expose_to_visitor']['#title'] = 'Expose Publication Type to visitors';
+    $form['exposed']['filter-field_publication_type_value']['expose_to_visitor']['#title'] = 'Allow the user to filter by Publication Type';
     $form['exposed']['filter-field_publication_type_value']['field_publication_type_value']['#weight'] = -87;
-    $form['exposed']['filter-field_circle_topics_tid']['expose_to_visitor']['#title'] = 'Expose CIRCLE Topic to visitors';
+    $form['exposed']['filter-field_circle_topics_tid']['expose_to_visitor']['#title'] = 'Allow the user to filter by Research Focus Areas';
     $form['comments']['#access'] = FALSE;
     $form['links']['#access'] = FALSE;
     $form['exposed']['filter-field_publication_type_value']['field_publication_type_value']['#theme'] = 'select';
@@ -63,6 +63,7 @@ function gsb_feature_all_research_display_pane_form_validate(&$form, &$form_stat
 
 function gsb_feature_all_research_display_form_views_exposed_form_alter(&$form, &$form_state) {
   if ($form['#id'] == 'views-exposed-form-gsb-all-research-listing-all-research-panel-pane') {
+    $form['field_search_field_value']['#attributes']['class'] = array('ctools-auto-submit-exclude');
     if (isset($form_state['input']['field_centers_research_programs_tid'])) {
       $options = array();
       $filter_on = FALSE;
@@ -86,7 +87,7 @@ function gsb_feature_all_research_display_form_views_exposed_form_alter(&$form, 
       }
       $form['field_circle_topics_tid']['#options'] = $options;
     }
-
+    //ctools-auto-submit-exclude
     $display_pub = $form_state['input']['filter-field_publication_type_value']['expose_to_visitor'];
     $display_topic = $form_state['input']['filter-field_circle_topics_tid']['expose_to_visitor'];
     if ($display_pub == 1 || $display_topic == 1 ) {
@@ -107,7 +108,7 @@ function gsb_feature_all_research_display_form_views_exposed_form_alter(&$form, 
     if ($display_topic == 1) {
       $form['narrow_search']['field_circle_topics_tid'] = $form['field_circle_topics_tid'];
       if (!empty($options)) {
-        $form['narrow_search']['field_circle_topics_tid']['#title'] = 'Circle Topic';
+        $form['narrow_search']['field_circle_topics_tid']['#title'] = 'Research Focus Areas';
       }
       unset($form['field_circle_topics_tid']);
       unset($form['#info']['filter-field_circle_topics_tid']['label']);
