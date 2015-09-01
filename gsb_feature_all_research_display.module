@@ -20,9 +20,9 @@ function gsb_feature_all_research_display_form_views_content_views_panes_content
     $form['view_mode']['#weight'] = -99;
     $form['exposed']['filter-field_publication_type_value']['expose_to_visitor']['#weight'] = -98;
     $form['exposed']['filter-field_circle_topics_tid']['expose_to_visitor']['#weight'] = -97;
-    $form['exposed']['filter-field_publication_type_value']['expose_to_visitor']['#title'] = 'Publication Type';
+    $form['exposed']['filter-field_publication_type_value']['expose_to_visitor']['#title'] = 'Expose Publication Type to visitors';
     $form['exposed']['filter-field_publication_type_value']['field_publication_type_value']['#weight'] = -87;
-    $form['exposed']['filter-field_circle_topics_tid']['expose_to_visitor']['#title'] = 'CIRCLE Topic';
+    $form['exposed']['filter-field_circle_topics_tid']['expose_to_visitor']['#title'] = 'Expose CIRCLE Topic to visitors';
     $form['comments']['#access'] = FALSE;
     $form['links']['#access'] = FALSE;
     $form['exposed']['filter-field_publication_type_value']['field_publication_type_value']['#theme'] = 'select';
@@ -50,6 +50,12 @@ function gsb_feature_all_research_display_form_views_content_views_panes_content
 function gsb_feature_all_research_display_pane_form_validate(&$form, &$form_state){
   if ($form_state['values']['exposed']['field_centers_research_programs_tid'] == 'All') {
     $form_state['values']['exposed']['filter-field_circle_topics_tid']['expose_to_visitor'] = 0;
+  }
+  if ($form_state['values']['exposed']['filter-field_publication_type_value']['expose_to_visitor'] == 1) {
+      unset($form_state['values']['exposed']['field_publication_type_value']);
+  }
+  if($form_state['values']['exposed']['filter-field_circle_topics_tid']['expose_to_visitor'] == 1) {
+    unset($form_state['values']['exposed']['field_circle_topics_tid']);
   }
 }
 
