@@ -462,7 +462,7 @@ function gsb_feature_all_research_display_views_default_views() {
   $handler->display->display_options['filters']['field_search_field_value']['exposed'] = TRUE;
   $handler->display->display_options['filters']['field_search_field_value']['expose']['operator_id'] = 'field_search_field_value_op';
   $handler->display->display_options['filters']['field_search_field_value']['expose']['operator'] = 'field_search_field_value_op';
-  $handler->display->display_options['filters']['field_search_field_value']['expose']['identifier'] = 'search';
+  $handler->display->display_options['filters']['field_search_field_value']['expose']['identifier'] = 'field_search_field_value';
   $handler->display->display_options['filters']['field_search_field_value']['expose']['remember_roles'] = array(
     2 => '2',
     1 => 0,
