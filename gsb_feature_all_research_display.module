@@ -20,15 +20,15 @@ function gsb_feature_all_research_display_form_views_content_views_panes_content
     $form['view_mode']['#weight'] = -99;
     $form['exposed']['filter-field_publication_type_value']['expose_to_visitor']['#weight'] = -98;
     $form['exposed']['filter-field_circle_topics_tid']['expose_to_visitor']['#weight'] = -97;
-    $form['exposed']['filter-field_publication_type_value']['expose_to_visitor']['#title'] = 'Allow the user to filter by Publication Type';
+    $form['exposed']['filter-field_publication_type_value']['expose_to_visitor']['#title'] = '<span class="hide_pub">Publication Type</span>';
     $form['exposed']['filter-field_publication_type_value']['field_publication_type_value']['#weight'] = -87;
-    $form['exposed']['filter-field_circle_topics_tid']['expose_to_visitor']['#title'] = 'Allow the user to filter by Research Focus Areas';
+    $form['exposed']['filter-field_circle_topics_tid']['expose_to_visitor']['#title'] = '<span class="hide_topic">CIRCLE Topic</span>';
     $form['comments']['#access'] = FALSE;
     $form['links']['#access'] = FALSE;
     $form['exposed']['filter-field_publication_type_value']['field_publication_type_value']['#theme'] = 'select';
-    $form['exposed']['filter-field_publication_type_value']['#title'] = t('<span class="hide_pub">Publication Type</span>');
+    $form['exposed']['filter-field_publication_type_value']['#title'] = t('Allow the user to filter by Publication Type');
     $form['exposed']['filter-field_circle_topics_tid']['field_circle_topics_tid']['#theme'] = 'select';
-    $form['exposed']['filter-field_circle_topics_tid']['#title'] = t('<span class="hide_topic">CIRCLE Topic</span>');
+    $form['exposed']['filter-field_circle_topics_tid']['#title'] = t('Allow the user to filter by Research Focus Areas');
 
     $all_topics = $form['exposed']['filter-field_circle_topics_tid']['field_circle_topics_tid']['#options'];
     $topics = array();
