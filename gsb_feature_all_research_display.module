@@ -45,7 +45,6 @@ function gsb_feature_all_research_display_form_views_content_views_panes_content
     drupal_add_js(drupal_get_path('module', 'gsb_feature_all_research_display') . '/js/gsb_feature_all_research_display.js');
     $form['#validate'][] = 'gsb_feature_all_research_display_pane_form_validate';
  }
-
 }
 function gsb_feature_all_research_display_pane_form_validate(&$form, &$form_state){
   if ($form_state['values']['exposed']['field_centers_research_programs_tid'] == 'All') {
@@ -64,6 +63,8 @@ function gsb_feature_all_research_display_pane_form_validate(&$form, &$form_stat
 function gsb_feature_all_research_display_form_views_exposed_form_alter(&$form, &$form_state) {
   if ($form['#id'] == 'views-exposed-form-gsb-all-research-listing-all-research-panel-pane') {
     $form['field_search_field_value']['#attributes']['class'][] = 'ctools-auto-submit-exclude';
+    //$form['field_search_field_value']['#prefix'] = '<div class="custom-wrapper">';
+    //$form['submit']['#suffix'] = '</div>';
     if (isset($form_state['input']['field_centers_research_programs_tid'])) {
       $options = array();
       $filter_on = FALSE;
@@ -87,30 +88,44 @@ function gsb_feature_all_research_display_form_views_exposed_form_alter(&$form, 
       }
       $form['field_circle_topics_tid']['#options'] = $options;
     }
-    //ctools-auto-submit-exclude
+
     $display_pub = $form_state['input']['filter-field_publication_type_value']['expose_to_visitor'];
     $display_topic = $form_state['input']['filter-field_circle_topics_tid']['expose_to_visitor'];
-    if ($display_pub == 1 || $display_topic == 1 ) {
-      $form['narrow_search'] = array(
+    $fieldset = array();
+    if ($display_pub || $display_topic) {
+      $fieldset = array(
         '#title' => t('Narrow your results'),
         '#type' => 'fieldset',
+        '#weight' => 100,
         '#collapsible' => TRUE,
         '#collapsed' => (empty($form_state['input']['field_publication_type_value']) && empty($form_state['input']['field_circle_topics_tid'])) ? TRUE : FALSE,
       );
     }
-   if ($display_pub == 1) {
-      $form['narrow_search']['field_publication_type_value'] = $form['field_publication_type_value'];
-      $form['narrow_search']['field_publication_type_value']['#title'] = 'Publication Type';
-      unset($form['field_publication_type_value']);
-      unset($form['#info']['filter-field_publication_type_value']['label']);
+
+    if ($display_pub) {
+      $fieldset['field_publication_type_value'] = $form['field_publication_type_value'];
+      $fieldset['field_publication_type_value']['#title'] = t('Publication Type');
+      $form['field_publication_type_value'] = FALSE;
+      unset($form['#info']['filter-field_publication_type_value']);
     }
-    if ($display_topic == 1) {
-      $form['narrow_search']['field_circle_topics_tid'] = $form['field_circle_topics_tid'];
+    if ($display_topic) {
+      $fieldset['field_circle_topics_tid'] = $form['field_circle_topics_tid'];
       if (!empty($options)) {
-        $form['narrow_search']['field_circle_topics_tid']['#title'] = 'Research Focus Areas';
+        $fieldset['field_circle_topics_tid']['#title'] = t('Research Focus Areas');
       }
-      unset($form['field_circle_topics_tid']);
-      unset($form['#info']['filter-field_circle_topics_tid']['label']);
+      $form['field_circle_topics_tid'] = FALSE;
+      unset($form['#info']['filter-field_circle_topics_tid']);
     }
+
+    $new_form = array();
+    foreach ($form as $key => $value) {
+      $new_form[$key] = $value;
+      if ($key == 'field_tag_tid') {
+        $new_form['narrow_search'] = $fieldset;
+      }
+    }
+    $form = $new_form;
+
+    drupal_add_js(drupal_get_path('module', 'gsb_feature_all_research_display') . '/js/gsb_align_exposed_markup.js');
   }
 }
