@@ -1,7 +1,7 @@
 name = GSB Feature All Research Display
 core = 7.x
 package = GSB
-version = 7.x-5.18
+version = 7.x-5.19
 dependencies[] = better_exposed_filters
 dependencies[] = entity
 dependencies[] = views
