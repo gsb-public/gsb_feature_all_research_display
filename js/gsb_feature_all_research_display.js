@@ -16,6 +16,7 @@
 
       if ($('#edit-exposed-field-centers-research-programs-tid').val() == 'All') {
         $('div.form-item-exposed-filter-field-circle-topics-tid-expose-to-visitor').hide();
+        $(".topic-label").hide();
         $('.hide_topic').hide();
         $('div.form-item-exposed-field-circle-topics-tid').hide();
       }
@@ -47,6 +48,7 @@
       $('div.form-item-exposed-field-centers-research-programs-tid :input').change(function (e) {
         if ($('#edit-exposed-field-centers-research-programs-tid').val() == 'All') {
           $('div.form-item-exposed-filter-field-circle-topics-tid-expose-to-visitor').hide();
+          $(".topic-label").hide();
           $('.hide_topic').hide();
           $('div.form-item-exposed-field-circle-topics-tid').hide();
         }
@@ -76,6 +78,7 @@
                 .text(options[i].value));
           }
           $('div.form-item-exposed-filter-field-circle-topics-tid-expose-to-visitor').show();
+          $(".topic-label").show();
           if ($('#edit-exposed-filter-field-circle-topics-tid-expose-to-visitor').prop('checked') ) {
             $('.hide_topic').hide();
             $('div.form-item-exposed-field-circle-topics-tid').hide();
@@ -92,8 +95,13 @@
         $('div.form-item-exposed-field-circle-topics-tid').hide();
       }
       $('div.form-item-exposed-filter-field-circle-topics-tid-expose-to-visitor :input').change(function (e) {
-        $('.hide_topic').toggle();
-        $('div.form-item-exposed-field-circle-topics-tid').toggle();
+        if ($('#edit-exposed-filter-field-circle-topics-tid-expose-to-visitor').prop('checked')) {
+          $('.hide_topic').hide();
+          $('div.form-item-exposed-field-circle-topics-tid').hide();
+        }else {
+          $('.hide_topic').show();
+          $('div.form-item-exposed-field-circle-topics-tid').show();
+        }
       });
     }
   };
