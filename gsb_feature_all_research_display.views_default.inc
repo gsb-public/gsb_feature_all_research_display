@@ -54,10 +54,12 @@ function gsb_feature_all_research_display_views_default_views() {
   $handler->display->display_options['sorts']['field_month_value']['id'] = 'field_month_value';
   $handler->display->display_options['sorts']['field_month_value']['table'] = 'field_data_field_month';
   $handler->display->display_options['sorts']['field_month_value']['field'] = 'field_month_value';
+  $handler->display->display_options['sorts']['field_month_value']['order'] = 'DESC';
   /* Sort criterion: Content: Day (field_pub_date_day) */
   $handler->display->display_options['sorts']['field_pub_date_day_value']['id'] = 'field_pub_date_day_value';
   $handler->display->display_options['sorts']['field_pub_date_day_value']['table'] = 'field_data_field_pub_date_day';
   $handler->display->display_options['sorts']['field_pub_date_day_value']['field'] = 'field_pub_date_day_value';
+  $handler->display->display_options['sorts']['field_pub_date_day_value']['order'] = 'DESC';
   /* Sort criterion: Content: Title */
   $handler->display->display_options['sorts']['title']['id'] = 'title';
   $handler->display->display_options['sorts']['title']['table'] = 'node';
