@@ -169,6 +169,7 @@ function gsb_feature_all_research_display_views_default_views() {
   $handler = $view->new_display('panel_pane', 'All Research Listing', 'all_research_panel_pane');
   $handler->display->display_options['defaults']['title'] = FALSE;
   $handler->display->display_options['defaults']['use_ajax'] = FALSE;
+  $handler->display->display_options['use_ajax'] = TRUE;
   $handler->display->display_options['defaults']['exposed_form'] = FALSE;
   $handler->display->display_options['exposed_form']['type'] = 'better_exposed_filters';
   $handler->display->display_options['exposed_form']['options']['autosubmit_hide'] = FALSE;
