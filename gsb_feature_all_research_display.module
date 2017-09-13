@@ -93,6 +93,7 @@ function gsb_feature_all_research_display_form_views_exposed_form_alter(&$form, 
     $display_topic = (!empty($form_state['input']['filter-field_circle_topics_tid'])) ? $form_state['input']['filter-field_circle_topics_tid']['expose_to_visitor'] : '';
 
     $fieldset = array();
+    $done_button_css = false;
     if ($display_pub || $display_topic) {
       $fieldset = array(
         '#title' => t('Narrow your results'),
@@ -101,6 +102,7 @@ function gsb_feature_all_research_display_form_views_exposed_form_alter(&$form, 
         '#collapsible' => TRUE,
         '#collapsed' => (empty($form_state['input']['field_publication_type_value']) && empty($form_state['input']['field_circle_topics_tid'])) ? TRUE : FALSE,
       );
+      $done_button_css = true;
     }
 
     if ($display_pub) {
@@ -117,15 +119,19 @@ function gsb_feature_all_research_display_form_views_exposed_form_alter(&$form, 
       $form['field_circle_topics_tid'] = FALSE;
       unset($form['#info']['filter-field_circle_topics_tid']);
     }
+
     $fieldset['done'] = array(
       '#type' => 'submit',
       '#value' => t('Done'),
-      '#attributes' => array(
+      );
+    if(!$done_button_css) {
+      $fieldset['done']['#attributes'] = array(
       'class' => array(
         'file-icon',
           ),
-        )
-    );
+       );
+    }
+    
     $fieldset['clear-all'] = array(
       '#type' => 'button',
       '#value' => t('Clear All'),
