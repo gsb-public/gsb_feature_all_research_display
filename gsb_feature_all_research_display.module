@@ -89,7 +89,6 @@ function gsb_feature_all_research_display_form_views_exposed_form_alter(&$form, 
       }
       $form['field_circle_topics_tid']['#options'] = $options;
     }
-
     $display_pub = (!empty($form_state['input']['filter-field_publication_type_value'])) ? $form_state['input']['filter-field_publication_type_value']['expose_to_visitor'] : '';
     $display_topic = (!empty($form_state['input']['filter-field_circle_topics_tid'])) ? $form_state['input']['filter-field_circle_topics_tid']['expose_to_visitor'] : '';
 
@@ -121,6 +120,11 @@ function gsb_feature_all_research_display_form_views_exposed_form_alter(&$form, 
     $fieldset['done'] = array(
       '#type' => 'submit',
       '#value' => t('Done'),
+      '#attributes' => array(
+      'class' => array(
+        'file-icon',
+          ),
+        )
     );
     $fieldset['clear-all'] = array(
       '#type' => 'button',
