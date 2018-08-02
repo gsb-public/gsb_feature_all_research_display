@@ -153,7 +153,7 @@ function gsb_feature_all_research_display_views_default_views() {
     271 => 0,
   );
   $handler->display->display_options['filters']['field_publication_type_value']['reduce_duplicates'] = TRUE;
-  /* Filter criterion: Content: Stanford GSB Affiliations or Initiatives (field_centers_research_programs) */
+  /* Filter criterion: Content: Circle (Centers and Research Programs) (field_centers_research_programs) */
   $handler->display->display_options['filters']['field_centers_research_programs_tid']['id'] = 'field_centers_research_programs_tid';
   $handler->display->display_options['filters']['field_centers_research_programs_tid']['table'] = 'field_data_field_centers_research_programs';
   $handler->display->display_options['filters']['field_centers_research_programs_tid']['field'] = 'field_centers_research_programs_tid';
@@ -442,8 +442,6 @@ function gsb_feature_all_research_display_views_default_views() {
     'any_label' => NULL,
     'filter_rewrite_values' => NULL,
   );
-  $handler->display->display_options['exposed_form']['options']['input_required'] = 0;
-  $handler->display->display_options['exposed_form']['options']['text_input_required_format'] = 'gsb_wysiwyg_text';
   $handler->display->display_options['defaults']['style_plugin'] = FALSE;
   $handler->display->display_options['style_plugin'] = 'default';
   $handler->display->display_options['defaults']['style_options'] = FALSE;
@@ -615,7 +613,7 @@ function gsb_feature_all_research_display_views_default_views() {
     271 => 0,
   );
   $handler->display->display_options['filters']['field_publication_type_value']['reduce_duplicates'] = TRUE;
-  /* Filter criterion: Content: Stanford GSB Affiliations or Initiatives (field_centers_research_programs) */
+  /* Filter criterion: Content: Circle (Centers and Research Programs) (field_centers_research_programs) */
   $handler->display->display_options['filters']['field_centers_research_programs_tid']['id'] = 'field_centers_research_programs_tid';
   $handler->display->display_options['filters']['field_centers_research_programs_tid']['table'] = 'field_data_field_centers_research_programs';
   $handler->display->display_options['filters']['field_centers_research_programs_tid']['field'] = 'field_centers_research_programs_tid';
