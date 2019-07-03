@@ -442,6 +442,16 @@ function gsb_feature_all_research_display_views_default_views() {
     'any_label' => NULL,
     'filter_rewrite_values' => NULL,
   );
+  $handler->display->display_options['defaults']['pager'] = FALSE;
+  $handler->display->display_options['pager']['type'] = 'load_more';
+  $handler->display->display_options['pager']['options']['items_per_page'] = '10';
+  $handler->display->display_options['pager']['options']['offset'] = '0';
+  $handler->display->display_options['pager']['options']['id'] = '0';
+  $handler->display->display_options['pager']['options']['quantity'] = '9';
+  $handler->display->display_options['pager']['options']['more_button_text'] = 'Show more';
+  $handler->display->display_options['pager']['options']['use_go_to_top_link'] = 1;
+  $handler->display->display_options['pager']['options']['use_go_to_top_text'] = 'Back to the Top';
+  $handler->display->display_options['pager']['options']['effects']['speed'] = 'slow';
   $handler->display->display_options['defaults']['style_plugin'] = FALSE;
   $handler->display->display_options['style_plugin'] = 'default';
   $handler->display->display_options['defaults']['style_options'] = FALSE;
